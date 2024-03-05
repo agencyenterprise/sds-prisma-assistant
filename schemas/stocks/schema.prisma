@@ -1,0 +1,109 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id         Int           @id @default(autoincrement())
+  username   String        @unique
+  email      String        @unique
+  password   String
+  createdAt  DateTime      @default(now())
+  updatedAt  DateTime      @updatedAt
+  portfolios Portfolio[]
+  watchlists Watchlist[]
+  settings   UserSetting[]
+}
+
+model Stock {
+  id          Int           @id @default(autoincrement())
+  ticker      String        @unique
+  name        String
+  market      String?
+  sector      String?
+  industry    String?
+  holdings    Holding[]
+  prices      StockPrice[]
+  watchlists  Watchlist[]
+  dividends   Dividend[]
+  Transaction Transaction[]
+}
+
+model Portfolio {
+  id          Int           @id @default(autoincrement())
+  name        String
+  userId      Int
+  user        User          @relation(fields: [userId], references: [id])
+  holdings    Holding[]
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  Transaction Transaction[]
+}
+
+model Holding {
+  id            Int       @id @default(autoincrement())
+  portfolioId   Int
+  stockId       Int
+  quantity      Float
+  purchasePrice Float
+  purchaseDate  DateTime
+  portfolio     Portfolio @relation(fields: [portfolioId], references: [id])
+  stock         Stock     @relation(fields: [stockId], references: [id])
+}
+
+model Transaction {
+  id              Int       @id @default(autoincrement())
+  portfolioId     Int
+  stockId         Int
+  type            String // Consider using an Enum for "buy" or "sell"
+  quantity        Float
+  pricePerShare   Float
+  transactionDate DateTime
+  fees            Float? // Nullable in case there are no fees
+  portfolio       Portfolio @relation(fields: [portfolioId], references: [id])
+  stock           Stock     @relation(fields: [stockId], references: [id])
+}
+
+model Watchlist {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  stockId   Int
+  addedDate DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+  stock     Stock    @relation(fields: [stockId], references: [id])
+}
+
+model StockPrice {
+  id                 Int      @id @default(autoincrement())
+  stockId            Int
+  date               DateTime
+  openPrice          Float
+  highPrice          Float
+  lowPrice           Float
+  closePrice         Float
+  adjustedClosePrice Float
+  volume             Int
+  stock              Stock    @relation(fields: [stockId], references: [id])
+}
+
+model Dividend {
+  id             Int      @id @default(autoincrement())
+  stockId        Int
+  paymentDate    DateTime
+  recordDate     DateTime
+  exDividendDate DateTime
+  amountPerShare Float
+  stock          Stock    @relation(fields: [stockId], references: [id])
+}
+
+model UserSetting {
+  id     Int    @id @default(autoincrement())
+  userId Int
+  name   String
+  value  String
+  user   User   @relation(fields: [userId], references: [id])
+}
