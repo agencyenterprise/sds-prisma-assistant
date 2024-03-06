@@ -1,9 +1,8 @@
-// Inspired by Chatbot-UI and modified to fit the needs of this project
-// @see https://github.com/mckaywrigley/chatbot-ui/blob/main/components/Chat/ChatMessage.tsx
 import { Message } from 'ai'
 import React from 'react'
 import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
+import { twMerge } from 'tailwind-merge'
 
 import { ChatMessageActions } from '@/components/chat-message-actions'
 import { MemoizedReactMarkdown } from '@/components/markdown'
@@ -66,7 +65,13 @@ export function ChatMessage({ message, ...props }: ChatMessageProps) {
                 !firstChildAsString.includes('\n')
               ) {
                 return (
-                  <code className={className} {...props}>
+                  <code
+                    className={twMerge(
+                      className,
+                      'not-prose bg-black/90 rounded-full px-2 font-medium text-white',
+                    )}
+                    {...props}
+                  >
                     {childArray}
                   </code>
                 )
