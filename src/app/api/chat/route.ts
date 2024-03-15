@@ -1,12 +1,37 @@
-import { OpenAIStream, StreamingTextResponse } from 'ai'
+import Anthropic from '@anthropic-ai/sdk'
+import { AnthropicStream, OpenAIStream, StreamingTextResponse } from 'ai'
 import { readFileSync } from 'node:fs'
 import OpenAI from 'openai'
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY!,
-})
-
 export async function POST(req: Request) {
+  return await forAnthropic(req)
+}
+
+async function forAnthropic(req: Request) {
+  const anthropic = new Anthropic({
+    apiKey: process.env.ANTHROPIC_API_KEY || '',
+  })
+
+  const { messages } = await req.json()
+
+  const response = await anthropic.messages.create({
+    system: getSystemPrompt(),
+    messages,
+    model: 'claude-3-opus-20240229',
+    stream: true,
+    max_tokens: 500,
+  })
+
+  const stream = AnthropicStream(response)
+
+  return new StreamingTextResponse(stream)
+}
+
+async function forOpenAI(req: Request) {
+  const openai = new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY!,
+  })
+
   const { messages } = await req.json()
 
   const response = await openai.chat.completions.create({
@@ -48,28 +73,3 @@ function getSystemPrompt(): string {
     '"""',
   ].join('\n')
 }
-
-// function getSystemPrompt(): string {
-//   const content = readFileSync('schemas/stocks/schema.prisma', 'utf8')
-//
-//   return [
-//     'You are a helpful assistant expert on prisma.io.',
-//     'Your job is to answer questions about a Prisma schema.',
-//     'If you are asked a question not related to Prisma, you can respond with "I am an expert on Prisma schema."',
-//     'You should questions related to:',
-//     '1. Querying the database',
-//     '2. Mutating the database',
-//     '3. Viewing the current schema',
-//     '4. Changing the schema',
-//     '',
-//     '# Considerations',
-//     '- Whenever you are asked to generate a code, you should only generate the query, or mutation, without any extra code, imports, or functions, or variables.',
-//     '- When asked to generate code, you will default to generating Typescript code, or Javascript code if the user asks for it.',
-//     '- When you generate a query or mutation, do not assign it to a variable.',
-//     '- When asked to generate a query, only include relations if it is requested by the user.',
-//     '',
-//     'Prisma Schema: """',
-//     content,
-//     '"""',
-//   ].join('\n')
-// }
