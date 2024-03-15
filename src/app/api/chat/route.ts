@@ -4,7 +4,7 @@ import { readFileSync } from 'node:fs'
 import OpenAI from 'openai'
 
 export async function POST(req: Request) {
-  return await forAnthropic(req)
+  return await forOpenAI(req)
 }
 
 async function forAnthropic(req: Request) {
@@ -52,7 +52,10 @@ async function forOpenAI(req: Request) {
 }
 
 function getSystemPrompt(): string {
-  const content = readFileSync('schemas/stocks/schema.prisma', 'utf8')
+  const path = process.env.SCHEMA_PATH || ''
+
+  const content = readFileSync(path, 'utf8')
+
   return [
     'You are an expert on Prisma ORM. You will be given a Prisma Schema, and you will use your expertise to help users with the following tasks:',
     '1. Write queries.',
