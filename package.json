@@ -2,6 +2,7 @@
   "name": "prisma-assist",
   "version": "0.1.0",
   "private": true,
+  "bin": "./index.js",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -22,6 +23,7 @@
     "@types/react-syntax-highlighter": "^15.5.11",
     "ai": "^3.0.5",
     "class-variance-authority": "^0.7.0",
+    "commander": "^12.0.0",
     "framer-motion": "^11.0.8",
     "next": "14.1.2",
     "next-themes": "^0.2.1",
