@@ -19,6 +19,10 @@ program
     const port = options.port || 4500
     const schema = options.schema || './prisma/schema.prisma'
 
+    require('dotenv').config({
+      path: path.resolve(__dirname, '.env.prisma-assist'),
+    })
+
     const app = next({
       dev: false,
       customServer: true,
