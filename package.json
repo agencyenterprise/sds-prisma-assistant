@@ -1,6 +1,6 @@
 {
   "name": "sds-prsm-assist",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "bin": "./bin/index.js",
   "scripts": {
     "dev": "next dev",
