@@ -1,0 +1,11 @@
+.env*
+.idea
+src
+.DS_Store
+.next/cache/*
+build/cache/*
+.prettierignore
+.prettierrc.js
+next-env.d.ts
+schemas
+.eslintrc.json

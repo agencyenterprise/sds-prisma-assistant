@@ -1,5 +1,5 @@
 {
-  "name": "prisma-assist",
+  "name": "sds-prsm-assist",
   "version": "0.1.0",
   "private": true,
   "bin": "./index.js",
