@@ -7,7 +7,7 @@ const { createServer } = require('http')
 const { program } = require('commander')
 
 function getSchemaPath(schema) {
-  return path.resolve(__dirname, schema)
+  return path.resolve(process.cwd(), schema)
 }
 
 program
@@ -20,12 +20,13 @@ program
     const schema = options.schema || './prisma/schema.prisma'
 
     require('dotenv').config({
-      path: path.resolve(__dirname, '.env.prisma-assist'),
+      path: path.resolve(process.cwd(), '.env.prisma-assist'),
     })
 
     const app = next({
       dev: false,
       customServer: true,
+      dir: path.resolve(__dirname, '..'),
     })
 
     const handle = app.getRequestHandler()
