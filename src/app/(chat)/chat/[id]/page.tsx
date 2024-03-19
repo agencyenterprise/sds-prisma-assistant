@@ -9,7 +9,7 @@ export interface ChatPageProps {
 }
 
 export const metadata: Metadata = {
-  title: 'Prisma Assist',
+  title: 'Prisma Assistant',
 }
 
 export default async function ChatPage({ params }: ChatPageProps) {
