@@ -1,6 +1,6 @@
 {
-  "name": "sds-prsm-assist",
-  "version": "0.1.3",
+  "name": "prisma-assistant",
+  "version": "0.0.1",
   "bin": "./bin/index.js",
   "scripts": {
     "dev": "next dev",
