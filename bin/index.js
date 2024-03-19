@@ -24,7 +24,11 @@ function getSchemaPath(schema) {
 }
 
 function hasOpenAIEnvVars() {
-  const keys = ['OPENAI_API_KEY', 'PRISMA_ASSIST_OPENAI_API_KEY']
+  const keys = [
+    'OPENAI_API_KEY',
+    'PRISMA_ASSISTANT_OPENAI_API_KEY',
+    'PRISMA_ASSIST_OPENAI_API_KEY',
+  ]
 
   return keys.some((key) => process.env[key])
 }
@@ -48,8 +52,8 @@ program
       program.error(
         [
           `${red('Error:')} The OPENAI_API_KEY environment variable is missing or empty.`,
-          `You can provide it globally as ${bold('OPENAI_API_KEY')}, or ${bold('PRISMA_ASSIST_OPENAI_API_KEY')}.`,
-          `Example: $ export PRISMA_ASSIST_OPENAI_API_KEY=variable_value`,
+          `You can provide it globally as ${bold('OPENAI_API_KEY')}, or ${bold('PRISMA_ASSISTANT_OPENAI_API_KEY')}.`,
+          `Example: $ export PRISMA_ASSISTANT_OPENAI_API_KEY=variable_value`,
         ].join('\n'),
       )
     }

@@ -9,7 +9,7 @@ Prisma Assistant is a tool that lets you interact with your schema conversationa
 To use Prisma Assistant, you'll need to set up your environment with an OpenAI API key, which can be obtained from [OpenAI's API portal](https://openai.com/api/):
 
 ```bash
-export PRISMA_ASSIST_OPENAI_API_KEY=sk-...
+export PRISMA_ASSISTANT_OPENAI_API_KEY=sk-...
 ```
 
 Next, start the Prisma Assistant server by running the following command in your terminal:

@@ -9,7 +9,9 @@ export async function POST(req: Request) {
 async function forOpenAI(req: Request) {
   const openai = new OpenAI({
     apiKey:
-      process.env.OPENAI_API_KEY! || process.env.PRISMA_ASSIST_OPENAI_API_KEY!,
+      process.env.OPENAI_API_KEY! ||
+      process.env.PRISMA_ASSISTANT_OPENAI_API_KEY! ||
+      process.env.PRISMA_ASSIST_OPENAI_API_KEY!,
     baseURL:
       process.env.OPENAI_API_BASE_URL ||
       process.env.PRISMA_ASSIST_OPENAI_API_BASE_URL!,
