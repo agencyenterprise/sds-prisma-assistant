@@ -1,13 +1,26 @@
 #!/usr/bin/env node
 
+const fs = require('fs')
 const next = require('next')
 const path = require('path')
 const { parse } = require('url')
 const { createServer } = require('http')
 const { program } = require('commander')
+const { red, green, bold, underline } = require('kleur')
 
 function getSchemaPath(schema) {
-  return path.resolve(process.cwd(), schema)
+  const filepath = path.resolve(process.cwd(), schema)
+
+  if (!fs.existsSync(filepath)) {
+    program.error(
+      [
+        `${red('Error:')} Could not find a ${bold('schema.prisma')} file that is required for this command.`,
+        `You can either provide it with ${green('--schema')} or put it into the default location ${green('./prisma/schema.prisma')} ${underline('https://pris.ly/d/prisma-schema-location')}`,
+      ].join('\n'),
+    )
+  }
+
+  return filepath
 }
 
 program
@@ -23,6 +36,8 @@ program
       path: path.resolve(process.cwd(), '.env.prisma-assist'),
     })
 
+    process.env['SCHEMA_PATH'] = getSchemaPath(schema)
+
     const app = next({
       dev: false,
       customServer: true,
@@ -32,7 +47,6 @@ program
     const handle = app.getRequestHandler()
 
     app.prepare().then(() => {
-      process.env['SCHEMA_PATH'] = getSchemaPath(schema)
       createServer(async (req, res) => {
         await handle(req, res, parse(req.url, true))
       }).listen(port, () => {
