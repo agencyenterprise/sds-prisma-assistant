@@ -30,6 +30,8 @@ After accessing the UI, you can begin conversing with your Prisma schema. The UI
 - "What are the relations for the User model?"
 - "What is the purpose of the Connection model?"
 
+![UI Example](./images/prompt.png)
+
 ### Security Considerations
 
 Your OpenAI API key is sensitive information, and we do not have access to it since Prisma Assistant runs entirely on your machine. We recommend that you keep your API key secure and do not share it with others.
