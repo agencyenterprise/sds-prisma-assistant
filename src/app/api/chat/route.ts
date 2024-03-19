@@ -1,30 +1,9 @@
-import Anthropic from '@anthropic-ai/sdk'
-import { AnthropicStream, OpenAIStream, StreamingTextResponse } from 'ai'
+import { OpenAIStream, StreamingTextResponse } from 'ai'
 import { readFileSync } from 'node:fs'
 import OpenAI from 'openai'
 
 export async function POST(req: Request) {
   return await forOpenAI(req)
-}
-
-async function forAnthropic(req: Request) {
-  const anthropic = new Anthropic({
-    apiKey: process.env.ANTHROPIC_API_KEY || '',
-  })
-
-  const { messages } = await req.json()
-
-  const response = await anthropic.messages.create({
-    system: getSystemPrompt(),
-    messages,
-    model: 'claude-3-opus-20240229',
-    stream: true,
-    max_tokens: 500,
-  })
-
-  const stream = AnthropicStream(response)
-
-  return new StreamingTextResponse(stream)
 }
 
 async function forOpenAI(req: Request) {
