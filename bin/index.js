@@ -23,6 +23,12 @@ function getSchemaPath(schema) {
   return filepath
 }
 
+function hasOpenAIEnvVars() {
+  const keys = ['OPENAI_API_KEY', 'PRISMA_ASSIST_OPENAI_API_KEY']
+
+  return keys.some((key) => process.env[key])
+}
+
 program
   .version('0.0.1')
   .description('Chat with your schema with Prisma Assist')
@@ -37,6 +43,16 @@ program
     })
 
     process.env['SCHEMA_PATH'] = getSchemaPath(schema)
+
+    if (!hasOpenAIEnvVars()) {
+      program.error(
+        [
+          `${red('Error:')} The OPENAI_API_KEY environment variable is missing or empty.`,
+          `You can provide it globally as ${bold('OPENAI_API_KEY')}, or ${bold('PRISMA_ASSIST_OPENAI_API_KEY')}.`,
+          `Example: $ export PRISMA_ASSIST_OPENAI_API_KEY=variable_value`,
+        ].join('\n'),
+      )
+    }
 
     const app = next({
       dev: false,
