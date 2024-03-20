@@ -1,5 +1,5 @@
 export const config = {
-  isWebsiteMode: process.env.WEBSITE_MODE === 'true',
+  isWebsiteMode: process.env.NEXT_PUBLIC_WEBSITE_MODE === 'true',
   openai: {
     apiKey:
       process.env.OPENAI_API_KEY! ||

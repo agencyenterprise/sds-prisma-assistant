@@ -1,7 +1,6 @@
 'use client'
 
 import { type Message, useChat } from 'ai/react'
-import { usePathname } from 'next/navigation'
 import { ComponentProps } from 'react'
 import { toast } from 'react-hot-toast'
 
@@ -18,7 +17,6 @@ export interface ChatProps extends ComponentProps<'div'> {
 }
 
 export function Chat({ id, initialMessages, className }: ChatProps) {
-  const path = usePathname()
   const [previewToken] = useLocalStorage<string | null>('ai-token', null)
   const { messages, append, reload, stop, isLoading, input, setInput } =
     useChat({
@@ -31,11 +29,6 @@ export function Chat({ id, initialMessages, className }: ChatProps) {
       onResponse(response) {
         if (response.status === 401) {
           toast.error(response.statusText)
-        }
-      },
-      onFinish() {
-        if (!path.includes('chat')) {
-          window.history.pushState({}, '', `/chat/${id}`)
         }
       },
     })

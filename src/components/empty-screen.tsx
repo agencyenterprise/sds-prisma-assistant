@@ -2,17 +2,42 @@ import { UseChatHelpers } from 'ai/react'
 
 import { Button } from '@/components/ui/button'
 import { IconArrowRight } from '@/components/ui/icons'
+import { config } from '@/lib/config'
 
-const exampleMessages = [
-  {
-    heading: 'List the models on your schema.',
-    message: 'List the models on my schema.',
-  },
-  {
-    heading: 'Generate a query',
-    message: `Generate a query for the User model.`,
-  },
-]
+const messages = config.isWebsiteMode
+  ? [
+      {
+        heading: 'Explain the schema',
+        message:
+          'Can you infer the purpose of the application based on the schema?',
+      },
+      {
+        heading: 'Print the schema',
+        message: 'Show the content of the schema',
+      },
+      {
+        heading: 'List the models',
+        message: 'List all models in the schema',
+      },
+      {
+        heading: 'Generate a query',
+        message: 'List all users, and include their stocks',
+      },
+      {
+        heading: 'Generate a mutation',
+        message: 'Create a user, and include a default portfolio',
+      },
+    ]
+  : [
+      {
+        heading: 'List all models in the schema',
+        message: 'List all models in the schema',
+      },
+      {
+        heading: 'Generate a query',
+        message: 'List all users',
+      },
+    ]
 
 export function EmptyScreen({ setInput }: Pick<UseChatHelpers, 'setInput'>) {
   return (
@@ -29,7 +54,7 @@ export function EmptyScreen({ setInput }: Pick<UseChatHelpers, 'setInput'>) {
           You can start a conversation here or try the following examples:
         </p>
         <div className="mt-4 flex flex-col items-start space-y-2">
-          {exampleMessages.map((message, index) => (
+          {messages.map((message, index) => (
             <Button
               key={index}
               variant="link"
