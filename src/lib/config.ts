@@ -7,8 +7,7 @@ export const config = {
       process.env.PRISMA_ASSIST_OPENAI_API_KEY!,
     baseURL:
       process.env.OPENAI_API_BASE_URL ||
-      process.env.PRISMA_ASSIST_OPENAI_API_BASE_URL!,
-    model:
-      process.env.PRISMA_ASSIST_OPENAI_API_BASE_URL! || 'gpt-4-turbo-preview',
+      process.env.PRISMA_ASSISTANT_OPENAI_API_BASE_URL!,
+    model: process.env.PRISMA_ASSISTANT_OPENAI_MODEL! || 'gpt-4-turbo-preview',
   },
 }

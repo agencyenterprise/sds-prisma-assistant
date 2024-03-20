@@ -32,6 +32,16 @@ After accessing the UI, you can begin conversing with your Prisma schema. The UI
 
 ![UI Example](./images/prompt.png)
 
+### Run it with Ollama
+
+You can also run Prisma Assistant with Ollama. To do so, set the following environment variables:
+
+```bash
+PRISMA_ASSISTANT_OPENAI_MODEL="llama2" # or any other model
+PRISMA_ASSISTANT_OPENAI_API_KEY="ollama"
+PRISMA_ASSISTANT_OPENAI_API_BASE_URL="http://localhost:11434/v1"
+```
+
 ### Security Considerations
 
 Your OpenAI API key is sensitive information, and we do not have access to it since Prisma Assistant runs entirely on your machine. We recommend that you keep your API key secure and do not share it with others.
