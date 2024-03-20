@@ -1,8 +1,11 @@
 import { redirect } from 'next/navigation'
 
-import { nanoid } from '@/lib/utils'
+import { config } from '@/lib/config'
 
 export default function Home() {
-  const id = nanoid()
-  redirect(`/chat/${id}`)
+  if (!config.isWebsiteMode) {
+    redirect(`/assistant`)
+  }
+
+  return <div>Homepage</div>
 }
