@@ -9,3 +9,4 @@ build/cache/*
 next-env.d.ts
 schemas
 .eslintrc.json
+.github
