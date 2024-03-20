@@ -2,25 +2,22 @@ import { OpenAIStream, StreamingTextResponse } from 'ai'
 import { readFileSync } from 'node:fs'
 import OpenAI from 'openai'
 
+import { config } from '@/lib/config'
+
 export async function POST(req: Request) {
   return await forOpenAI(req)
 }
 
 async function forOpenAI(req: Request) {
   const openai = new OpenAI({
-    apiKey:
-      process.env.OPENAI_API_KEY! ||
-      process.env.PRISMA_ASSISTANT_OPENAI_API_KEY! ||
-      process.env.PRISMA_ASSIST_OPENAI_API_KEY!,
-    baseURL:
-      process.env.OPENAI_API_BASE_URL ||
-      process.env.PRISMA_ASSIST_OPENAI_API_BASE_URL!,
+    apiKey: config.openai.apiKey,
+    baseURL: config.openai.baseURL,
   })
 
   const { messages } = await req.json()
 
   const response = await openai.chat.completions.create({
-    model: 'gpt-4-turbo-preview',
+    model: config.openai.model,
     stream: true,
     messages: [
       {
