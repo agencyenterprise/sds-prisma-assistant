@@ -52,6 +52,7 @@ function getSystemPrompt(): string {
     'Always double-check for correctness. Your code should be production-ready.',
     'When creating code, avoid including relations unless the user requests it.',
     'When writing code, avoid including imports, functions, or variables.',
+    'Your responses should be formatted as Markdown',
     '',
     'Here\'s the Prisma Schema: """',
     content,
