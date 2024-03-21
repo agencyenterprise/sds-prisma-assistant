@@ -16,6 +16,7 @@ const header = (
     <div>
       <Link
         href="/assistant"
+        data-analytics="open-prisma-assistant-playground"
         className="bg-[#4B5563] py-2.5 px-4 rounded-md text-white text-sm flex items-center gap-2"
       >
         Playground
