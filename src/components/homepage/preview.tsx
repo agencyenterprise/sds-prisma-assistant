@@ -18,7 +18,7 @@ export function Preview() {
         <Sender>
           <IconUser />
         </Sender>
-        <div>List all users with their portfolio</div>
+        <div>List all users, and include their portfolio</div>
       </div>
       <Separator />
       <div className="flex gap-4 items-start p-8">
