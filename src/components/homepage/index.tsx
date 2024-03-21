@@ -1,6 +1,6 @@
 import { ExternalLink } from 'lucide-react'
 import Link from 'next/link'
-import React from 'react'
+import React, { PropsWithChildren } from 'react'
 
 import Banner from '@/components/banner'
 
@@ -54,10 +54,45 @@ export default function Homepage() {
 
 function GettingStarted() {
   return (
-    <div className="bg-[#F9FAFB] px-6 py-6" id="getting-started">
-      <div className="max-w-3xl mx-auto mt-6">
-        <h2 className="text-4xl font-bold">Getting Started</h2>
+    <div className="bg-[#F9FAFB] px-6 py-24" id="getting-started">
+      <div className="max-w-3xl mx-auto flex flex-col gap-y-10">
+        <div className="bg-[#1F2937] rounded-full px-5 py-2 text-white">
+          <b>Note:</b> Prisma Assistant is currently in alpha. We are actively
+          working on improving the tool.
+        </div>
+        <div className="prose min-w-full">
+          <h2 className="text-4xl text-[#1E1865] font-bold">Getting Started</h2>
+          <p>
+            To use Prisma Assistant, you&apos;ll need to set up your environment
+            with an OpenAI API key, which can be obtained from{' '}
+            <Link href="https://openai.com/api" target="_blank">
+              OpenAI&apos;s API portal
+            </Link>
+            .
+          </p>
+          <p>For macOS/Linux Users, run the following command:</p>
+          <Code>export PRISMA_ASSISTANT_OPENAI_API_KEY=sk-...</Code>
+          <p>For Windows Users, run the following command:</p>
+          <Code>set PRISMA_ASSISTANT_OPENAI_API_KEY=sk-...</Code>
+          <p>
+            These commands only set the environment variable for the current
+            session, ideally you should set them permanently on your OS.
+          </p>
+          <p>
+            Next, start the Prisma Assistant server by running the following
+            command in your terminal:
+          </p>
+          <Code>npx prisma-assistant@latest</Code>
+        </div>
       </div>
+    </div>
+  )
+}
+
+function Code({ children }: PropsWithChildren) {
+  return (
+    <div className="bg-[#09090b] text-white rounded-lg px-5 py-2.5">
+      {children}
     </div>
   )
 }
