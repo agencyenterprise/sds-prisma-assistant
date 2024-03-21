@@ -53,7 +53,7 @@ program
         [
           `${red('Error:')} The OPENAI_API_KEY environment variable is missing or empty.`,
           `You can provide it globally as ${bold('OPENAI_API_KEY')}, or ${bold('PRISMA_ASSISTANT_OPENAI_API_KEY')}.`,
-          `Example: $ export PRISMA_ASSISTANT_OPENAI_API_KEY=variable_value`,
+          `Visit ${underline('https://prismaassistant.com/#getting-started')} for more information.`,
         ].join('\n'),
       )
     }

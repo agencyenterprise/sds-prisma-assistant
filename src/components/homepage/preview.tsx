@@ -13,7 +13,7 @@ function Sender({ children }: PropsWithChildren) {
 
 export function Preview() {
   return (
-    <div className="bg-white w-full max-w-3xl mx-auto mt-24 rounded-t-xl">
+    <div className="bg-white w-full max-w-3xl mx-auto mt-24 rounded-t-xl select-none">
       <div className="flex gap-4 items-center p-8">
         <Sender>
           <IconUser />
