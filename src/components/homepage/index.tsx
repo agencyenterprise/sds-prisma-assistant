@@ -1,3 +1,4 @@
+import { ExternalLink } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
 
@@ -14,9 +15,10 @@ const header = (
     <div>
       <Link
         href="/assistant"
-        className="bg-[#4B5563] py-2.5 px-4 rounded-md text-white text-sm"
+        className="bg-[#4B5563] py-2.5 px-4 rounded-md text-white text-sm flex items-center gap-2"
       >
         Playground
+        <ExternalLink size={18} />
       </Link>
     </div>
   </div>
