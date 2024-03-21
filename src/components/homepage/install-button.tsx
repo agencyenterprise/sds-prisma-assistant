@@ -2,9 +2,13 @@
 
 import { Copy } from 'lucide-react'
 
+import { track } from '@/lib/analytics'
+
 export function InstallButton() {
-  const onClick = () =>
+  const onClick = () => {
     navigator.clipboard.writeText('npx prisma-assistant@latest')
+    track('install_button_clicked')
+  }
 
   return (
     <button

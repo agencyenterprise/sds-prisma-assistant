@@ -1,9 +1,12 @@
 import type { Metadata } from 'next'
 import { Barlow } from 'next/font/google'
+import Script from 'next/script'
 import { ReactNode } from 'react'
 import { Toaster } from 'react-hot-toast'
 
+import Analytics from '@/components/analytics'
 import { Providers } from '@/components/providers'
+import { config } from '@/lib/config'
 
 import './globals.css'
 
@@ -35,6 +38,16 @@ export default function RootLayout({
         >
           {children}
         </Providers>
+        {config.isWebsiteMode && (
+          <>
+            <Analytics />
+            <Script
+              async
+              defer
+              src="https://scripts.simpleanalyticscdn.com/latest.js"
+            />
+          </>
+        )}
       </body>
     </html>
   )
