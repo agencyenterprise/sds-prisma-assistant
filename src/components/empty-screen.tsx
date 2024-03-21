@@ -1,4 +1,5 @@
 import { UseChatHelpers } from 'ai/react'
+import Link from 'next/link'
 
 import { Button } from '@/components/ui/button'
 import { IconArrowRight } from '@/components/ui/icons'
@@ -66,6 +67,20 @@ export function EmptyScreen({ setInput }: Pick<UseChatHelpers, 'setInput'>) {
             </Button>
           ))}
         </div>
+        {config.isWebsiteMode && (
+          <div className="mt-4 bg-[#1f2937] text-white rounded-md px-3 py-1.5">
+            <b>Note:</b> The playground utilizes a{' '}
+            <Link
+              className="underline underline-offset-2"
+              target="_blank"
+              href="https://github.com/agencyenterprise/sds-prisma-assistant/blob/main/schemas/stocks/schema.prisma"
+            >
+              sample schema
+            </Link>
+            . For personalized usage, you may run the assistant with your custom
+            schema locally.
+          </div>
+        )}
       </div>
     </div>
   )

@@ -80,7 +80,7 @@ program.addHelpText(
   `
 
 Examples:
-  $ npx prisma-assist --schema=./schema.prisma
+  $ npx prisma-assistant --schema=./schema.prisma
 `,
 )
 

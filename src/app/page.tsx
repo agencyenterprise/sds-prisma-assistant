@@ -1,7 +1,8 @@
 import { Metadata } from 'next'
-import Link from 'next/link'
 import { redirect } from 'next/navigation'
+import React from 'react'
 
+import Homepage from '@/components/homepage'
 import { config } from '@/lib/config'
 
 export const metadata: Metadata = {
@@ -13,9 +14,5 @@ export default function Home() {
     redirect(`/assistant`)
   }
 
-  return (
-    <div className="max-w-5xl mx-auto">
-      <Link href="/assistant">Demo</Link>
-    </div>
-  )
+  return <Homepage />
 }
