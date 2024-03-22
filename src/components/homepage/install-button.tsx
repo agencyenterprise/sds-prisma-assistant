@@ -20,7 +20,7 @@ export function InstallButton() {
   }
 
   return (
-    <>
+    <div className="flex flex-col gap-y-3">
       <button
         onClick={onClick}
         data-analytics="install-prisma-assistant"
@@ -29,7 +29,16 @@ export function InstallButton() {
         $ npx prisma-assistant@latest
         <Copy size={20} />
       </button>
-      {open && <StayInformed defaultOpen />}
-    </>
+      <button
+        className="max-w-fit mx-auto text-white"
+        onClick={() => setOpen(true)}
+      >
+        📢{' '}
+        <span className="underline underline-offset-2 ml-2 font-semibold">
+          Keep me in the Loop!
+        </span>
+      </button>
+      {open && <StayInformed defaultOpen onOpenChange={setOpen} />}
+    </div>
   )
 }

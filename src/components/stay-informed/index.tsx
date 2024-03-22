@@ -18,11 +18,19 @@ import {
 export function StayInformed({
   children,
   defaultOpen = false,
-}: PropsWithChildren<{ defaultOpen?: boolean }>) {
+  onOpenChange: _onOpenChange,
+}: PropsWithChildren<{
+  defaultOpen?: boolean
+  onOpenChange?: (value: boolean) => void
+}>) {
   const [open, setOpen] = React.useState(defaultOpen)
+  const onOpenChange = (value: boolean) => {
+    setOpen(value)
+    _onOpenChange?.(value)
+  }
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog open={open} onOpenChange={onOpenChange}>
       {children && (
         <DialogTrigger>
           <button
