@@ -45,7 +45,7 @@ export function StayInformed({
         <DialogHeader>
           <DialogTitle>Stay informed</DialogTitle>
           <DialogDescription>
-            We&apos;ll notify you about new features and updates.
+            We&apos;ll notify you when we&apos;re out of Alpha!
           </DialogDescription>
         </DialogHeader>
         <Form
