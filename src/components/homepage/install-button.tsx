@@ -1,6 +1,7 @@
 'use client'
 
 import { Copy } from 'lucide-react'
+import toast from 'react-hot-toast'
 
 import { track } from '@/lib/analytics'
 
@@ -8,6 +9,7 @@ export function InstallButton() {
   const onClick = () => {
     navigator.clipboard.writeText('npx prisma-assistant@latest')
     track('install_button_clicked')
+    toast.success('Copied to clipboard')
   }
 
   return (

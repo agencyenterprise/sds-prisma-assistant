@@ -61,13 +61,13 @@ function GettingStarted() {
       <div className="max-w-3xl mx-auto flex flex-col gap-y-10">
         <StayInformed>
           <div
-            className="rounded-full px-5 py-2 text-black"
+            className="rounded-full px-8 py-4 text-black text-base"
             style={{
               background:
                 'linear-gradient(90deg, #D3E9DC -1.48%, #B8C3FA 100.98%)',
             }}
           >
-            <b>Note:</b> Prisma Assistant is currently in early alpha.{' '}
+            <b>🚨 Note:</b> Prisma Assistant is currently in early alpha.{' '}
             <span className="underline underline-offset-2">
               Stay informed with new features and updates
             </span>
