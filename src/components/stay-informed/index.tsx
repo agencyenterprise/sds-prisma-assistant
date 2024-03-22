@@ -15,14 +15,24 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog'
 
-export function StayInformed({ children }: PropsWithChildren) {
-  const [open, setOpen] = React.useState(false)
+export function StayInformed({
+  children,
+  defaultOpen = false,
+}: PropsWithChildren<{ defaultOpen?: boolean }>) {
+  const [open, setOpen] = React.useState(defaultOpen)
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger>
-        <button className="w-full text-left">{children}</button>
-      </DialogTrigger>
+      {children && (
+        <DialogTrigger>
+          <button
+            className="w-full text-left"
+            data-analytics="banner-prisma-assistant"
+          >
+            {children}
+          </button>
+        </DialogTrigger>
+      )}
       <DialogContent className="sm:max-w-[400px]">
         <DialogHeader>
           <DialogTitle>Stay informed</DialogTitle>
@@ -76,7 +86,11 @@ function Form({ onSuccess }: { onSuccess: () => void }) {
         />
       </div>
       <DialogFooter className="items-center">
-        <Button disabled={!isValidEmail(email || '')} onClick={onSubmit}>
+        <Button
+          disabled={!isValidEmail(email || '')}
+          onClick={onSubmit}
+          data-analytics="get-notified-prisma-assistant"
+        >
           Get notified!
         </Button>
       </DialogFooter>
