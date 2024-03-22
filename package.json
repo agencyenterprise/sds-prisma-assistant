@@ -1,6 +1,6 @@
 {
   "name": "prisma-assistant",
-  "version": "0.0.31",
+  "version": "0.0.32",
   "bin": "./bin/index.js",
   "scripts": {
     "dev": "next dev",
