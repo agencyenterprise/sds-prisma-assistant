@@ -65,8 +65,8 @@ function GettingStarted() {
               'linear-gradient(90deg, #D3E9DC -1.48%, #B8C3FA 100.98%)',
           }}
         >
-          <b>Note:</b> Prisma Assistant is currently in alpha. We are actively
-          working on improving the tool.
+          <b>Note:</b> Prisma Assistant is currently in early alpha. We are
+          actively working on improving the tool.
         </div>
         <div className="prose min-w-full">
           <h2 className="text-4xl text-[#1E1865] font-bold">Getting Started</h2>
@@ -171,7 +171,7 @@ function Comment({ text }: { text: ReactNode }) {
 
 function Code({ children }: PropsWithChildren) {
   return (
-    <div className="bg-[#09090b] text-white rounded-lg px-5 py-2.5 font-mono">
+    <div className="bg-[#09090b] text-white rounded-lg px-5 py-2.5 font-mono overflow-x-scroll whitespace-nowrap">
       {children}
     </div>
   )

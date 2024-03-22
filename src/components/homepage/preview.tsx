@@ -21,7 +21,7 @@ export function Preview() {
         <div>List all users, and include their portfolio</div>
       </div>
       <Separator />
-      <div className="flex gap-4 items-start p-8">
+      <div className="flex flex-col md:flex-row gap-4 items-start p-8">
         <Sender>
           <IconOpenAI />
         </Sender>
