@@ -3,6 +3,7 @@ import Link from 'next/link'
 import React, { PropsWithChildren, ReactNode } from 'react'
 
 import Banner from '@/components/banner'
+import { StayInformed } from '@/components/stay-informed'
 
 import { InstallButton } from './install-button'
 import { Logo } from './logo'
@@ -58,16 +59,21 @@ function GettingStarted() {
   return (
     <section className="bg-[#F9FAFB] px-6 py-24" id="getting-started">
       <div className="max-w-3xl mx-auto flex flex-col gap-y-10">
-        <div
-          className="rounded-full px-5 py-2 text-black"
-          style={{
-            background:
-              'linear-gradient(90deg, #D3E9DC -1.48%, #B8C3FA 100.98%)',
-          }}
-        >
-          <b>Note:</b> Prisma Assistant is currently in early alpha. We are
-          actively working on improving the tool.
-        </div>
+        <StayInformed>
+          <div
+            className="rounded-full px-5 py-2 text-black"
+            style={{
+              background:
+                'linear-gradient(90deg, #D3E9DC -1.48%, #B8C3FA 100.98%)',
+            }}
+          >
+            <b>Note:</b> Prisma Assistant is currently in early alpha.{' '}
+            <span className="underline underline-offset-2">
+              Stay informed with new features and updates
+            </span>
+            .
+          </div>
+        </StayInformed>
         <div className="prose min-w-full">
           <h2 className="text-4xl text-[#1E1865] font-bold">Getting Started</h2>
           <p>
