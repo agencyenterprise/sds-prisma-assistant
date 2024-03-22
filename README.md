@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Prisma Assistant (Alpha)
 
-## Getting Started
+Prisma Assistant is a tool that lets you interact with your schema conversationally to gain insights and generate code, directly within your development environment.
 
-First, run the development server:
+> Note: Prisma Assistant is currently in alpha. We are actively working on improving the tool.
+
+### Getting Started
+
+To use Prisma Assistant, you'll need to set up your environment with an OpenAI API key, which can be obtained from [OpenAI's API portal](https://openai.com/api/):
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+export PRISMA_ASSISTANT_OPENAI_API_KEY=sk-...
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Next, start the Prisma Assistant server by running the following command in your terminal:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npx prisma-assistant@latest
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Once the server is running, Prisma Assistant will provide you with a URL to access the UI in your web browser.
 
-## Learn More
+### Interacting with Prisma Assistant
 
-To learn more about Next.js, take a look at the following resources:
+After accessing the UI, you can begin conversing with your Prisma schema. The UI will guide you through the process of asking questions and requesting code generation for your schema, such as:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- "Show me all the models in my schema."
+- "Generate a query to retrieve all users."
+- "Generate a mutation to create a new user."
+- "What are the relations for the User model?"
+- "What is the purpose of the Connection model?"
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+![UI Example](./images/prompt.png)
 
-## Deploy on Vercel
+### Run it with Ollama
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+You can also run Prisma Assistant with Ollama. To do so, set the following environment variables:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```bash
+PRISMA_ASSISTANT_OPENAI_MODEL="llama2" # or any other model
+PRISMA_ASSISTANT_OPENAI_API_KEY="ollama"
+PRISMA_ASSISTANT_OPENAI_API_BASE_URL="http://localhost:11434/v1"
+```
+
+### Security Considerations
+
+Your OpenAI API key is sensitive information, and we do not have access to it since Prisma Assistant runs entirely on your machine. We recommend that you keep your API key secure and do not share it with others.
