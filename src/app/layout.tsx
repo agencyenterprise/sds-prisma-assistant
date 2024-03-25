@@ -18,7 +18,7 @@ const barlow = Barlow({
 export const metadata: Metadata = {
   title: 'Prisma Assistant',
   description:
-    'A tool that lets you interact with your schema conversationally to gain insights and generate code, directly within your development environment.',
+    'Interact with your schema conversationally to gain insights and generate code, directly within your development environment.',
   metadataBase: new URL('https://prismaassistant.com'),
   openGraph: {
     images: [{ url: `/og.png`, width: 1200, height: 630 }],
