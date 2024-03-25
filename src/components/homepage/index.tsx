@@ -177,7 +177,7 @@ function Comment({ text }: { text: ReactNode }) {
 
 function Code({ children }: PropsWithChildren) {
   return (
-    <div className="bg-[#09090b] text-white rounded-lg px-5 py-2.5 font-mono overflow-x-scroll whitespace-nowrap">
+    <div className="bg-[#09090b] text-white rounded-lg px-5 py-2.5 font-mono overflow-x-auto whitespace-nowrap">
       {children}
     </div>
   )
