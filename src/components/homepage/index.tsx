@@ -61,7 +61,7 @@ function GettingStarted() {
       <div className="max-w-3xl mx-auto flex flex-col gap-y-10">
         <StayInformed>
           <div
-            className="rounded-full px-8 py-4 text-black text-base"
+            className="rounded-lg md:rounded-full px-5 py-3 md:px-8 md:py-4 text-black text-base"
             style={{
               background:
                 'linear-gradient(90deg, #D3E9DC -1.48%, #B8C3FA 100.98%)',
